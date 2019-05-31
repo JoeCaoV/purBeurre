@@ -1,2 +1,4 @@
 env/
 .vscode/
+purbeurre/purbeurre/__pycache__/
+purbeurre/website/__pycache__/
