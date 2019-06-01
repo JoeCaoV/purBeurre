@@ -1,0 +1,8 @@
+#services{
+    padding:3rem;
+}
+
+#footer-link{
+    display:flex;
+    justify-content: space-around;
+}
