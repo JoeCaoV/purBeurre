@@ -1,6 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     return render(request, 'pages/index.html')
-# Create your views here.
+
+def aliments(request):
+    return render(request, 'pages/aliments.html')
+
+def mentions(request):
+    return render(request, 'pages/mentions.html')
+
+def registration(request):
+    form = UserCreationForm()
+    context = {'form' : form}
+    return render(request, 'pages/registration.html', context)

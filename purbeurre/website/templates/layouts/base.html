@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>PurBeurre - {% block title %}{% endblock %}</title>
     {% load static %}
     <!-- Font Awesome Icons -->
     <link href="{% static 'website/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -44,17 +44,19 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                  <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                  <li class='nav-item'>
+                    <form class="research_products">
+                      <input type="text" name="product" placeholder="Chercher"></input>
+                    </form>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                      <a class="nav-link js-scroll-trigger" href="#about">Mon compte</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                      <a class="nav-link js-scroll-trigger" href="#services">Mes aliments</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                      <a class="nav-link js-scroll-trigger" href="#portfolio">Déconnexion</a>
                   </li>
                   </ul>
               </div>
@@ -63,7 +65,6 @@
     {% endblock %}
 
   {% block content %}
-
   {% endblock %}
 
   {% block footer %}
