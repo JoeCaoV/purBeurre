@@ -6,3 +6,10 @@
     display:flex;
     justify-content: space-around;
 }
+
+.form-wrapper{
+    text-align: center;
+    margin-top: 15px;
+    color: #ccced0;
+    font-weight: bold;
+}
