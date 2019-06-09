@@ -49,15 +49,24 @@
                       <input type="text" name="product" placeholder="Chercher"></input>
                     </form>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#about">Mon compte</a>
-                  </li>
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Mon compte</a>
+                    </li>
                   <li class="nav-item">
                       <a class="nav-link js-scroll-trigger" href="#services">Mes aliments</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" href="#portfolio">Déconnexion</a>
+                      <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Déconnexion</a>
                   </li>
+                  {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'register' %}">Inscription</a>
+                    </li>
+                  {% endif %}               
                   </ul>
               </div>
             </div>

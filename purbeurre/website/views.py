@@ -22,6 +22,15 @@ def registration(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
-    form = UserCreationForm()
+    else:
+        form = UserCreationForm()
+
     context = {'form' : form}
     return render(request, 'pages/registration.html', context)
+
+def login(request):
+    pass
+
+def logout(request):
+    logout(request)
+    return redirect('home')
