@@ -13,3 +13,9 @@
     color: #ccced0;
     font-weight: bold;
 }
+
+.errorlist{
+	color: #fd805e;
+	margin-top: 15px;
+    list-style-type: none;
+}
