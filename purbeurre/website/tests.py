@@ -21,7 +21,10 @@ class ApiOpenFood(TestCase):
                 'url': 'url',
                 'image_front_url': 'image_url',
                 'nutriments':{
-                    'nutrition-score-fr':25
+                    'nutrition-score-fr':25,
+                    'salt': 0.1,
+                    'sugars': 56.3,
+                    'fat': 30.9,
                 },
                 'categories': 'Pate à pain'
             }
@@ -29,11 +32,12 @@ class ApiOpenFood(TestCase):
 
         self.response = [
             {
-                 'name': 'name',
-                 'url': 'url',
-                 'nutriscore': 25,
-                 'image_url': 'image_url',
-                 'categories': 'Pate à pain'
+                'name': 'name',
+                'nutriscore': 25,
+                'image_url': 'image_url',
+                'salt': 0.1,
+                'sugars': 56.3,
+                'fat': 30.9,
             }
         ]
 

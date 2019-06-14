@@ -1,10 +1,38 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from website.models import Product
 
 def home(request):
     """Home Page"""
     return render(request, 'pages/index.html')
+
+def product(request, product_name):
+    name = product_name
+    try:
+        product = Product.objects.get(name=name)
+        context = {'product' : product}
+    except:
+        context = {'error' : 'Ce produit n\'existe pas dans notre base de données.'}
+    else:
+        try:
+            alternatives = Product.objects.filter(nutriscore__lt=product.nutriscore,
+                                                  category=product.category)
+            if alternatives:
+              context['alternatives'] = alternatives
+            else:
+                raise Exception()
+        except:
+            context['no_alternatives'] = 'Aucun meilleur produit trouvé'
+
+    return render(request, 'pages/product.html', context)
+
+def search(request):
+    search = request.get['name']
+    products = Product.objects.filter(name__contains=search)
+    if len(products):
+        pass
+
 
 def aliments(request):
     return render(request, 'pages/aliments.html')

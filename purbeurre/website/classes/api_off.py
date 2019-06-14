@@ -25,10 +25,12 @@ class ApiOff:
                 if len(result) < quantity:
                     try:
                         product = {'name': api_get['products'][count]['product_name_fr'],
-                                   'url': api_get['products'][count]['url'],
                                    'nutriscore': api_get['products'][count]['nutriments']['nutrition-score-fr'],
                                    'image_url': api_get['products'][count]['image_front_url'],
-                                   'categories': api_get['products'][count]['categories']}
+                                   'salt' : api_get['products'][count]['nutriments']['salt'],
+                                   'sugar' : api_get['products'][count]['nutriments']['sugars'],
+                                   'fat' : api_get['products'][count]['nutriments']['fat'],
+                                   'calories' : api_get['products'][count]['nutriments']['energy_value']}
                     except IndexError:
                         break
                     except:

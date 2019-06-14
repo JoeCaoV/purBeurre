@@ -19,3 +19,35 @@
 	margin-top: 15px;
     list-style-type: none;
 }
+
+.product{
+	color:#E8A75D;
+}
+
+.alt_thumb figure{
+	position: relative;
+	margin:auto;
+	width: 150px;
+}
+
+.alt_thumb a{
+    color:black;
+}
+
+.nutriscore_thumb{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: #28a745;
+    border-radius: 100%;
+}
+
+h1, h2, h3, h4, h5{
+	font-family: "Open Sans", sans-serif!important;
+}
+
+p{
+	font-family: "Scope One", sans-serif!important;
+}
