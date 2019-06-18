@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from website.models import Product
+from website.models import Product, Alternative
 
 def home(request):
     """Home Page"""
@@ -28,14 +28,36 @@ def product(request, product_name):
     return render(request, 'pages/product.html', context)
 
 def search(request):
-    search = request.get['name']
-    products = Product.objects.filter(name__contains=search)
-    if len(products):
-        pass
+    try:
+        search = request.GET['name']
+        products = Product.objects.filter(name__contains=search)
+        context = {'search' : search}
+        if len(products) == 1:
+            return redirect('product', product_name=products.name)
+        elif not products:
+            raise Exception()
+        else:
+            context['products'] = products
+    except:
+        context = {'error' : 'Aucun produit ne correspond à votre recherche'}
+    return render(request, 'pages/search.html', context)
+
 
 
 def aliments(request):
-    return render(request, 'pages/aliments.html')
+    """display every registered aliments for the connected user"""
+    if request.user.is_authenticated:
+        try:
+            alternatives = Alternative.objects.filter(user=request.user)
+            if alternatives:
+                context = {'alternatives' : alternatives}
+            else:
+                raise Exception()
+        except:
+            context = {'error' : 'Aucun produits enregistrés trouvés'}
+    else:
+        context = {'error' : 'Vous n\'êtes pas connecter'}
+    return render(request, 'pages/aliments.html', context)
 
 def mentions(request):
     """Legales mentions page"""

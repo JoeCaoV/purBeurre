@@ -12,6 +12,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=155, unique=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	nutriscore = models.IntegerField()
+	url = models.CharField(max_length=255, default="")
 	image_url = models.CharField(max_length=255, default="")
 	salt = models.FloatField(default=0)
 	sugar = models.FloatField(default=0)

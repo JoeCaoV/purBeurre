@@ -3,6 +3,7 @@ from website.models import Category, Product
 from website.classes.api_off import ApiOff
 from website.config import CATEGORIES
 
+
 class Command(BaseCommand):
     help = 'Populate our Product Database with data from OpenFoodFact'
 

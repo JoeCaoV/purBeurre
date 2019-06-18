@@ -1,6 +1,9 @@
 from django.test import TestCase
 from mock import patch
 from .classes.api_off import ApiOff
+from io import StringIO
+from django.core.management import call_command
+from django.db import transaction
 # Create your tests here.
 
 class ApiOpenFood(TestCase):
@@ -25,8 +28,10 @@ class ApiOpenFood(TestCase):
                     'salt': 0.1,
                     'sugars': 56.3,
                     'fat': 30.9,
+                    'energy_value': 50,
                 },
-                'categories': 'Pate à pain'
+                'categories': 'Pate à pain',
+                'url': 'url.com'
             }
         ]
 
@@ -35,9 +40,11 @@ class ApiOpenFood(TestCase):
                 'name': 'name',
                 'nutriscore': 25,
                 'image_url': 'image_url',
+                'url': 'url.com',
                 'salt': 0.1,
-                'sugars': 56.3,
+                'sugar': 56.3,
                 'fat': 30.9,
+                'calories': 50,
             }
         ]
 
@@ -74,3 +81,8 @@ class ApiOpenFood(TestCase):
         """Testing a failing result"""
         mock_api.return_value.json.return_value = 'No valuable value, yes I wrote that'
         self.assertFalse(self.api.research_products('test', 5))
+
+class Populate_database(TestCase):
+    """contain the test of the command 'import_products'"""
+    def test_import_product(self):
+        call_command('import_products', '500')

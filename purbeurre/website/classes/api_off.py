@@ -27,6 +27,7 @@ class ApiOff:
                         product = {'name': api_get['products'][count]['product_name_fr'],
                                    'nutriscore': api_get['products'][count]['nutriments']['nutrition-score-fr'],
                                    'image_url': api_get['products'][count]['image_front_url'],
+                                   'url' : api_get['products'][count]['url'],
                                    'salt' : api_get['products'][count]['nutriments']['salt'],
                                    'sugar' : api_get['products'][count]['nutriments']['sugars'],
                                    'fat' : api_get['products'][count]['nutriments']['fat'],

@@ -47,8 +47,8 @@
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ml-auto my-2 my-lg-0">
                   <li class='nav-item'>
-                    <form action="{% url 'search' %}"class="research_products">
-                      <input type="text" name="product" placeholder="Chercher"></input>
+                    <form action="{% url 'search' %}" class="research_products nav_search" method="GET">
+                      {{ search_form.name }}
                     </form>
                   </li>
                   {% if user.is_authenticated %}
@@ -84,7 +84,7 @@
       <div class="container">
         <div class="text-center text-muted">
           <ul id="footer-link">
-            <li>Mentions légales</li>
+            <li><a href="{% url 'mentions' %}">Mentions légales</a></li>
             <li>Contact</li>
           </ul>
         </div>
