@@ -16,6 +16,11 @@
                         {{ form.username.errors }}
                     </div>
                     <div class='form-wrapper'>
+                        <label for="{{ form.email.id_for_label }}">Email</label><br/>
+                        {{ form.email}}
+                        {{ form.email.errors }}
+                    </div>
+                    <div class='form-wrapper'>
                         <label for="{{ form.password1.id_for_label }}">Mot de passe</label><br/>
                         {{ form.password1 }}
                         {{ form.password1.errors }}

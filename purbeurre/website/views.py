@@ -33,7 +33,7 @@ def search(request):
         products = Product.objects.filter(name__contains=search)
         context = {'search' : search}
         if len(products) == 1:
-            return redirect('product', product_name=products.name)
+            return redirect('product', product_name=products[0].name)
         elif not products:
             raise Exception()
         else:
@@ -41,8 +41,6 @@ def search(request):
     except:
         context = {'error' : 'Aucun produit ne correspond à votre recherche'}
     return render(request, 'pages/search.html', context)
-
-
 
 def aliments(request):
     """display every registered aliments for the connected user"""
@@ -54,10 +52,25 @@ def aliments(request):
             else:
                 raise Exception()
         except:
-            context = {'error' : 'Aucun produits enregistrés trouvés'}
+            context = {'error' : 'Aucun produits enregistrés'}
     else:
         context = {'error' : 'Vous n\'êtes pas connecter'}
     return render(request, 'pages/aliments.html', context)
+
+def account(request):
+    """page that display the information of the accont"""
+    return render(request, 'pages/account.html')
+
+def save_alt(request):
+    """save a product for the active user"""
+    if request.method == 'POST':
+        product_id = request.POST['product_id']
+        user =  request.user
+        product = Product.objects.get(pk=product_id)
+        alternative = Alternative(user=user, product=product)
+        alternative.save()
+        data = json.dumps('ok')
+        return {'response' : 'Saved'}
 
 def mentions(request):
     """Legales mentions page"""

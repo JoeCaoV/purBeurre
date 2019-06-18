@@ -45,9 +45,9 @@
         	        <img src='{{ alternative.image_url}}' width='150px' height="150px">
         	        <p class='nutriscore_thumb'>{{ alternative.nutriscore }}</p>
         	      </figure>
-        	    <p><a class="text-moules' href="{% url 'product' product_name=alternative.name %}">{{ alternative.name }}</a></p>
-              {% if user.is_authentificated %}
-        	      <p><img src="{% static 'website/img/saveicon.png' %}" alt='save' width='25px' height='25px'>Sauvegarder</p>
+        	    <p><a class="text-moules" href="{% url 'product' product_name=alternative.name %}">{{ alternative.name }}</a></p>
+              {% if user.is_authenticated %}
+        	      <p class="save-alt" name="{{ alternative.id }}"><img src="{% static 'website/img/saveicon.png' %}" alt='save' width='25px' height='25px'>Sauvegarder</p>
               {% endif %}
         	    </div>
         	  {% endfor %}
@@ -55,4 +55,20 @@
       </div>
     </div>
   </section>
+{% endblock %}
+
+{% block script %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.save-alt').on('click', function(event) {
+        ajaxPost('{% url 'save_alt' %}',
+                   {
+                    'product_id' : $(this).attr('name')
+                   },function(event){
+                    alert('wtf')
+                   })
+      });
+    });
+  </script>
 {% endblock %}
