@@ -26,7 +26,7 @@ SECRET_KEY = SECRETKEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://murmuring-falls-38065.herokuapp.com/']
+ALLOWED_HOSTS = ['https://murmuring-falls-38065.herokuapp.com']
 
 
 # Application definition
