@@ -24,6 +24,24 @@
 	color:#E8A75D;
 }
 
+#product_name{
+    height:250px;
+    background-size: contain;
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+
+#product_name *{
+	background-color: white;
+	margin:auto;
+}
+
+.nutrigrade{
+	display: flex;
+	align-items: center;
+}
+
 .alt_thumb figure{
 	position: relative;
 	margin:auto;
@@ -31,7 +49,7 @@
 }
 
 .alt_thumb a{
-    color:black;
+    color:#345A61;
 }
 
 .nutriscore_thumb{
@@ -97,4 +115,7 @@ p{
 
 #product_name{
 	border-bottom: 4px solid;
+	background-color:black;
+	background-repeat: no-repeat;
+	background-position: center;
 }

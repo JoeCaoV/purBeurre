@@ -24,14 +24,15 @@ class ApiOff:
             for count, product in enumerate(products):
                 if len(result) < quantity:
                     try:
-                        product = {'name': api_get['products'][count]['product_name_fr'],
-                                   'nutriscore': api_get['products'][count]['nutriments']['nutrition-score-fr'],
-                                   'image_url': api_get['products'][count]['image_front_url'],
-                                   'url' : api_get['products'][count]['url'],
-                                   'salt' : api_get['products'][count]['nutriments']['salt'],
-                                   'sugar' : api_get['products'][count]['nutriments']['sugars'],
-                                   'fat' : api_get['products'][count]['nutriments']['fat'],
-                                   'calories' : api_get['products'][count]['nutriments']['energy_value']}
+                        product = {'name': products[count]['product_name_fr'],
+                                   'nutriscore': products[count]['nutriments']['nutrition-score-fr'],
+                                   'nutrigrade' : products[count]['nutrition_grade_fr'].upper(),
+                                   'image_url': products[count]['image_front_url'],
+                                   'url' : products[count]['url'],
+                                   'salt' : products[count]['nutriments']['salt'],
+                                   'sugar' : products[count]['nutriments']['sugars'],
+                                   'fat' : products[count]['nutriments']['fat'],
+                                   'calories' : products[count]['nutriments']['energy_value']}
                     except IndexError:
                         break
                     except:

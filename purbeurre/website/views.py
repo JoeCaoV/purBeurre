@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse
+from website.forms import RegistrationForm
 from website.models import Product, Alternative
 
 def home(request):
@@ -8,18 +11,23 @@ def home(request):
     return render(request, 'pages/index.html')
 
 def product(request, product_name):
+    """Product page"""
     name = product_name
     try:
         product = Product.objects.get(name=name)
         context = {'product' : product}
-    except:
+    except DoesNotExist:
         context = {'error' : 'Ce produit n\'existe pas dans notre base de données.'}
     else:
         try:
             alternatives = Product.objects.filter(nutriscore__lt=product.nutriscore,
-                                                  category=product.category)
+                                                  category=product.category
+                                                  )
+            if request.user.is_authenticated:
+                saved = Alternative.objects.filter(user=request.user).values('product')
+                alternatives = alternatives.exclude(pk__in=saved)
             if alternatives:
-              context['alternatives'] = alternatives
+                context['alternatives'] = alternatives
             else:
                 raise Exception()
         except:
@@ -28,18 +36,46 @@ def product(request, product_name):
     return render(request, 'pages/product.html', context)
 
 def search(request):
+    """Research page :
+    if 1 product match the research, display it with it's alternative
+    if no product match the research, try to find result containing the research
+    if 1 product match the new research, display it with it's alternative
+    if several product match the new research, display them all
+    if no product match the new research, display no product found
+    """
     try:
         search = request.GET['name']
+        product = Product.objects.get(name=search)
+        context = {'product' : product}
+    except Product.DoesNotExist:
         products = Product.objects.filter(name__contains=search)
-        context = {'search' : search}
-        if len(products) == 1:
-            return redirect('product', product_name=products[0].name)
-        elif not products:
-            raise Exception()
+        if not products:
+            context = {'error' : 'Aucun produit ne correspond à votre recherche'}
+        elif len(products) == 1:
+            context = {'product' : products[0]}
         else:
-            context['products'] = products
+            context = {'products' : products}
     except:
         context = {'error' : 'Aucun produit ne correspond à votre recherche'}
+    #if we got only one product, let's find his alternative products
+    try:
+        product = context['product']
+    except:
+        pass
+    else:
+        try:
+            alternatives = Product.objects.filter(nutriscore__lt=product.nutriscore,
+                                                  category=product.category)
+            if request.user.is_authenticated:
+                saved = Alternative.objects.filter(user=request.user).values('product')
+                alternatives = alternatives.exclude(pk__in=saved)
+            if alternatives:
+                context['alternatives'] = alternatives
+            else:
+                raise Exception()
+        except:
+            context['no_alternatives'] = 'Aucun meilleur produit trouvé'
+
     return render(request, 'pages/search.html', context)
 
 def aliments(request):
@@ -69,8 +105,7 @@ def save_alt(request):
         product = Product.objects.get(pk=product_id)
         alternative = Alternative(user=user, product=product)
         alternative.save()
-        data = json.dumps('ok')
-        return {'response' : 'Saved'}
+        return HttpResponse('')
 
 def mentions(request):
     """Legales mentions page"""
@@ -79,7 +114,7 @@ def mentions(request):
 def registration(request):
     """Page to create an account"""
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
 
         if form.is_valid():
             form.save()
@@ -90,7 +125,7 @@ def registration(request):
                 login(request, user)
                 return redirect('home')
     else:
-        form = UserCreationForm()
+        form = RegistrationForm()
     context = {'form' : form}
     return render(request, 'pages/registration.html', context)
 
@@ -115,3 +150,7 @@ def disconnection(request):
     """Please, the name is clear enough"""
     logout(request)
     return redirect('home')
+
+def contact(request):
+    """page with contact information"""
+    return render(request, 'pages/contact.html')

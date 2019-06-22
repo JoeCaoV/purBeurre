@@ -3,4 +3,4 @@ env/
 purbeurre/purbeurre/__pycache__/
 purbeurre/website/__pycache__/
 purbeurre/website/migrations/
-secret.py
+purbeurre/purbeurre/secret.py

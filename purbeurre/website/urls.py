@@ -8,8 +8,9 @@ urlpatterns = [
     path('mentions', views.mentions, name="mentions"),
     path('connection', views.connection, name="connection"),
     path('disconnection', views.disconnection, name='logout'),
-    path('product/<str:product_name>', views.product, name='product'),
+    path('product/<path:product_name>', views.product, name='product'),
     path('search', views.search, name='search'),
     path('save-alt', views.save_alt, name='save_alt'),
     path('account', views.account, name='account'),
+    path('contact', views.contact, name='contact'),
 ]

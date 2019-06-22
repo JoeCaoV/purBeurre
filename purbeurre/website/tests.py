@@ -23,6 +23,7 @@ class ApiOpenFood(TestCase):
                 'product_name_fr': 'name',
                 'url': 'url',
                 'image_front_url': 'image_url',
+                'nutrition_grade_fr':'e',
                 'nutriments':{
                     'nutrition-score-fr':25,
                     'salt': 0.1,
@@ -39,6 +40,7 @@ class ApiOpenFood(TestCase):
             {
                 'name': 'name',
                 'nutriscore': 25,
+                'nutrigrade': 'E',
                 'image_url': 'image_url',
                 'url': 'url.com',
                 'salt': 0.1,
