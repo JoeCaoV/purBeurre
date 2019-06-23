@@ -1,0 +1,121 @@
+#services{
+    padding:3rem;
+}
+
+#footer-link{
+    display:flex;
+    justify-content: space-around;
+}
+
+.form-wrapper{
+    text-align: center;
+    margin-top: 15px;
+    color: #ccced0;
+    font-weight: bold;
+}
+
+.errorlist{
+	color: #fd805e;
+	margin-top: 15px;
+    list-style-type: none;
+}
+
+.product{
+	color:#E8A75D;
+}
+
+#product_name{
+    height:250px;
+    background-size: contain;
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+
+#product_name *{
+	background-color: white;
+	margin:auto;
+}
+
+.nutrigrade{
+	display: flex;
+	align-items: center;
+}
+
+.alt_thumb figure{
+	position: relative;
+	margin:auto;
+	width: 150px;
+}
+
+.alt_thumb a{
+    color:#345A61;
+}
+
+.nutriscore_thumb{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: #28a745;
+    border-radius: 100%;
+}
+
+h1, h2, h3, h4, h5{
+	font-family: "Open Sans", sans-serif!important;
+}
+
+p{
+	font-family: "Scope One", sans-serif!important;
+	color: #345A61;
+}
+
+.mentions_ul{
+    list-style-type: none;
+    text-align: left
+}
+
+.nav-link, .navbar-brand{
+	color:#E8A75D!important
+}
+
+.nav_search input{
+    background-color: #ece3e3;
+}
+
+.home_search input{
+	height:50px;
+}
+
+.home_search input:first-child{
+	width:400px;
+}
+
+.text-bonbon{
+	color:#86EBE6;
+}
+
+.text-biscuit{
+	color:#E8A75D;
+}
+
+.text-rooibos{
+	color:#C45525;
+}
+
+.text-moules{
+	color:#345A61;
+}
+
+.nutriments p{
+    color:#DE9440;
+    text-align: left;
+}
+
+#product_name{
+	border-bottom: 4px solid;
+	background-color:black;
+	background-repeat: no-repeat;
+	background-position: center;
+}
