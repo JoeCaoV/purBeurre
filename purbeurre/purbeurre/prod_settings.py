@@ -3,9 +3,8 @@ import dj_database_url
 from .settings import *
 
 DEBUG = False
-TEMPLATE_DEBUG = False
 
-MIDDLEWARE_CLASSES = ['whitenoise.middleware.WhiteNoiseMiddleware']
+MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
