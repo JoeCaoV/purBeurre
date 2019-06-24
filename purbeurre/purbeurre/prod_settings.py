@@ -6,7 +6,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware']
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 DATABASES['default'] = dj_database_url.config()
