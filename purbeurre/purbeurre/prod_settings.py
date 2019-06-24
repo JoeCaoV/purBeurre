@@ -1,9 +1,13 @@
 import dj_database_url
 
-from purbeurre.settings import *
+from .settings import *
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
+
+MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 DATABASES['default'] = dj_database_url.config()
 
