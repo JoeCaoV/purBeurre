@@ -5,7 +5,7 @@ from .settings import *
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
+MIDDLEWARE_CLASSES = ['whitenoise.middleware.WhiteNoiseMiddleware']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
