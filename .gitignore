@@ -1,7 +1,7 @@
 env/
 .vscode/
 purbeurre/purbeurre/__pycache__/
-#purbeurre/staticfiles/
+purbeurre/staticfiles/
 purbeurre/website/__pycache__/
 #purbeurre/website/migrations/
 purbeurre/website/classes/__pycache__/

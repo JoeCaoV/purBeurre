@@ -16,7 +16,7 @@ def product(request, product_name):
     try:
         product = Product.objects.get(name=name)
         context = {'product' : product}
-    except DoesNotExist:
+    except Product.DoesNotExist:
         context = {'error' : 'Ce produit n\'existe pas dans notre base de données.'}
     else:
         try:
@@ -154,3 +154,11 @@ def disconnection(request):
 def contact(request):
     """page with contact information"""
     return render(request, 'pages/contact.html')
+
+def handler404(request, exception):
+    """Error page 404"""
+    return render(request, 'errors/error404.html', status=404)
+
+def handler500(request):
+    """Error page 500"""
+    return render(request, 'errors/error500.html')
