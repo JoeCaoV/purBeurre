@@ -131,6 +131,7 @@ def registration(request):
 
 def connection(request):
     """page to log in"""
+    context = {}
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
 
@@ -141,9 +142,14 @@ def connection(request):
             if user is not None:
                 login(request, user)
                 return redirect('home')
+            else:
+                context['error'] = 'Le mot de passe & le pseudo ne correspondent pas.'
+        else:
+            context['error'] = 'Le mot de passe & le pseudo ne correspondent pas.'
+
     else:
         form = AuthenticationForm()
-    context = {'form' : form}
+    context['form'] = form
     return render(request, 'pages/connexion.html', context)
 
 def disconnection(request):

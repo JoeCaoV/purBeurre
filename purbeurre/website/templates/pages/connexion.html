@@ -18,9 +18,9 @@
                         <label for="{{ form.password.id_for_label }}">Mot de passe</label><br/>
                         {{ form.password }}
                     </div>
-                    {% if form.error_messages %}
+                    {% if error %}
                         <p></p>
-                        <p class='text-biscuit'>Le mot de passe & le pseudo ne correspondent pas.</p>
+                        <p class='text-biscuit'>{{ error }}</p>
                     {% endif %}
                     <hr class="divider my-4">
                     <input type="submit" value='Connexion' />
