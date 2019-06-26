@@ -1,9 +1,9 @@
-from django.test import TestCase
-from mock import patch
 from .classes.api_off import ApiOff
-from io import StringIO
 from django.core.management import call_command
 from django.db import transaction
+from django.test import TestCase
+from io import StringIO
+from mock import patch
 # Create your tests here.
 
 class ApiOpenFood(TestCase):

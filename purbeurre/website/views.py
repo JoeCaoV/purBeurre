@@ -14,7 +14,7 @@ def product(request, product_name):
     """Product page"""
     name = product_name
     try:
-        product = Product.objects.get(name=name)
+        product = Product.objects.get(name__iexact=name)
         context = {'product' : product}
     except Product.DoesNotExist:
         context = {'error' : 'Ce produit n\'existe pas dans notre base de données.'}
@@ -22,7 +22,7 @@ def product(request, product_name):
         try:
             alternatives = Product.objects.filter(nutriscore__lt=product.nutriscore,
                                                   category=product.category
-                                                  )
+                                                  ).order_by('nutrigrade', 'name')
             if request.user.is_authenticated:
                 saved = Alternative.objects.filter(user=request.user).values('product')
                 alternatives = alternatives.exclude(pk__in=saved)
@@ -45,10 +45,10 @@ def search(request):
     """
     try:
         search = request.GET['name']
-        product = Product.objects.get(name=search)
+        product = Product.objects.get(name__iexact=search)
         context = {'product' : product}
     except Product.DoesNotExist:
-        products = Product.objects.filter(name__contains=search)
+        products = Product.objects.filter(name__icontains=search)
         if not products:
             context = {'error' : 'Aucun produit ne correspond à votre recherche'}
         elif len(products) == 1:
@@ -65,7 +65,8 @@ def search(request):
     else:
         try:
             alternatives = Product.objects.filter(nutriscore__lt=product.nutriscore,
-                                                  category=product.category)
+                                                  category=product.category
+                                                  ).order_by('nutrigrade', 'name')
             if request.user.is_authenticated:
                 saved = Alternative.objects.filter(user=request.user).values('product')
                 alternatives = alternatives.exclude(pk__in=saved)

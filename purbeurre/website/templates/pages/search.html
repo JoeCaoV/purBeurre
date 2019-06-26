@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <!-- Results Section -->
-  <section class="page-section">
+  <section class="page-section" id="masthead">
     <div class="container">
       {% if error %}
         <h2 class="text-center text-rooibos mt-0">{{ error }}</h2>
@@ -15,9 +15,9 @@
     	      <a href="{% url 'product' product_name=product.name %}">
         	      <figure>
         	        <img src='{{ product.image_url}}' width='150px' height="150px">
-        	        <p class='nutriscore_thumb'>{{ product.nutrigrade }}</p>
+        	        <p class='nutriscore_thumb'>{{ product.nutrigrade | upper }}</p>
         	      </figure>
-    	          <p>{{ product.name }}</p>
+    	          <p class='text-rooibos'>{{ product.name }}</p>
     	       </a>
     	    </div>
         {% endfor %}
@@ -44,7 +44,7 @@
             <div class='col-lg-4 col-sm-12 alt_thumb'>
               <figure>
                 <img src='{{ alternative.image_url}}' width='150px' height="150px">
-                <p class='nutriscore_thumb'>{{ alternative.nutrigrade }}</p>
+                <p class='nutriscore_thumb'>{{ alternative.nutrigrade | upper }}</p>
               </figure>
             <p><a class="text-moules" href="{% url 'product' product_name=alternative.name %}">{{ alternative.name }}</a></p>
             {% if user.is_authenticated %}
