@@ -13,7 +13,7 @@ class ApiOff:
         """Research and return the first product found
         according to the research terms
         """
-        params = {'search_terms' : category, 'json' : 1}
+        params = {'search_terms' : category, 'json' : 1, 'page_size' : quantity}
         api_get = requests.get(self.search_url, params=params).json()
         try:
             products = api_get['products']
