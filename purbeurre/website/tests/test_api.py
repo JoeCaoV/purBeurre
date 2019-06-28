@@ -1,8 +1,5 @@
-from .classes.api_off import ApiOff
-from django.core.management import call_command
-from django.db import transaction
+from website.classes.api_off import ApiOff
 from django.test import TestCase
-from io import StringIO
 from mock import patch
 # Create your tests here.
 
@@ -83,8 +80,3 @@ class ApiOpenFood(TestCase):
         """Testing a failing result"""
         mock_api.return_value.json.return_value = 'No valuable value, yes I wrote that'
         self.assertFalse(self.api.research_products('test', 5))
-
-class Populate_database(TestCase):
-    """contain the test of the command 'import_products'"""
-    def test_import_product(self):
-        call_command('import_products', '500')

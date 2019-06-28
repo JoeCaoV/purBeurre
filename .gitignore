@@ -3,5 +3,9 @@ env/
 purbeurre/purbeurre/__pycache__/
 purbeurre/staticfiles/
 purbeurre/website/__pycache__/
-#purbeurre/website/migrations/
+purbeurre/website/migrations/
 purbeurre/website/classes/__pycache__/
+purbeurre/website/management/commands/__pycache__/
+
+*__pycache__
+*.py[cod]
