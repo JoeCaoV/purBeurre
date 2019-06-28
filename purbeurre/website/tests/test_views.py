@@ -1,9 +1,10 @@
+"""importing test module, urls, and models"""
 from django.test import TestCase, Client
 from django.urls import reverse
 from website.models import Product, Category
 
 class WebsiteViews(TestCase):
-
+    """testing the views of the Website App"""
     def setUp(self):
         """creating some objects for the tests"""
         self.client = Client()

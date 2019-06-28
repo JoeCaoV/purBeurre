@@ -1,6 +1,8 @@
-from website.classes.api_off import ApiOff
+"""modules for test, mock and the api class"""
 from django.test import TestCase
 from mock import patch
+from website.classes.api_off import ApiOff
+
 # Create your tests here.
 
 class ApiOpenFood(TestCase):
@@ -18,7 +20,6 @@ class ApiOpenFood(TestCase):
         self.list = [
             {
                 'product_name_fr': 'name',
-                'url': 'url',
                 'image_front_url': 'image_url',
                 'nutrition_grade_fr':'e',
                 'nutriments':{

@@ -1,5 +1,6 @@
+"""Import django module and models"""
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
@@ -76,7 +77,6 @@ def search(request):
                 raise Exception()
         except:
             context['no_alternatives'] = 'Aucun meilleur produit trouvé'
-
     return render(request, 'pages/search.html', context)
 
 def aliments(request):
@@ -102,11 +102,11 @@ def save_alt(request):
     """save a product for the active user"""
     if request.method == 'POST':
         product_id = request.POST['product_id']
-        user =  request.user
+        user = request.user
         product = Product.objects.get(pk=product_id)
         alternative = Alternative(user=user, product=product)
         alternative.save()
-        return HttpResponse('')
+    return HttpResponse('')
 
 def mentions(request):
     """Legales mentions page"""
