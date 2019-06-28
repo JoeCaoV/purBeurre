@@ -2,6 +2,7 @@ env/
 .vscode/
 purbeurre/staticfiles/
 purbeurre/website/migrations/
+purbeurre/purbeurre/prod_settings.py
 
 
 *__pycache__
