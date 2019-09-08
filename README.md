@@ -16,5 +16,4 @@ Enfin, $ Python purbeurre/manage.py runserver pour lancer le site en local
 
 ### Tests unitaire : 
 
-L'application Website, contient un dossier Tests/ contenant les différents tests de ce projets. Pour les 
-executer exécuter $ Python purbeurre/manage.py test website
+L'application Website, contient un dossier Tests/ contenant les différents tests de ce projet. Pour les executer $ Python purbeurre/manage.py test website
