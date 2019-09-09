@@ -3,10 +3,6 @@ python:
   - '3.6'
   - '3.5'
 
-branches:
-  only:
-    - travis
-
 before_script:
   - pip install -r requirements.txt
   
