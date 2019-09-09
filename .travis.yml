@@ -12,5 +12,4 @@ services:
 env: DJANGO_SETTINGS_MODULE="purbeurre.travis_settings", DEBUG_COLLECTSTATIC="1", DISABLE_COLLECTSTATIC="1"
 
 script:
-  - purbeurre/manage.py collectstatic
   - purbeurre/manage.py test website
