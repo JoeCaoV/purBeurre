@@ -12,5 +12,6 @@ services:
 env: DJANGO_SETTINGS_MODULE="purbeurre.travis_settings"
 
 script:
+  - mkdir purbeurre/static
   - yes yes | purbeurre/manage.py collectstatic
   - purbeurre/manage.py test website
